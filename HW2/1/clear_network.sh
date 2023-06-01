@@ -13,6 +13,8 @@ done
 
 sudo ip netns delete router
 sudo ip link delete s1
+sudo ip link delete s1-3
+sudo ip link delete s2-3
 sudo ip link delete s2
 
 echo done

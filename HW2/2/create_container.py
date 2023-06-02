@@ -4,9 +4,6 @@ from utils import *
 
 
 
-
-
-
 def main():
 
     # Read values from args
@@ -36,7 +33,7 @@ def main():
 
 
     # File system setup
-    # init_fs()
+    init_fs()
 
     """
     * create new namespaces: pid, net, uts, and mount (mnt)
@@ -46,6 +43,7 @@ def main():
     cmd = initial_env_cmd(container)
 
     # Start the container
+    print("\nstart container {}...".format(container))
     subprocess.call(cmd)
 
     # Clean env after exit

@@ -1,0 +1,5 @@
+sh python2.7 config.py
+py h1.setDefaultRoute(intf='h1-eth1')
+py h2.setDefaultRoute(intf='h2-eth1')
+sh python2.7 create_flows.py
+sh python2.7 send_flows.py

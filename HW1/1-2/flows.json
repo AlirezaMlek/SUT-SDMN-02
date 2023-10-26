@@ -1,0 +1,86 @@
+[
+
+{
+	"dev":"s1",
+	"idle_timeout":30,
+	"priority":65535,
+	"other":"icmp,in_port=s1-eth1,vlan_tci=0x0001,dl_dst=00:00:00:00:00:01,icmp_code=0",
+	"actions":"output:s1-eth2"
+},
+
+{
+	"dev":"s1",
+	"idle_timeout":30,
+	"priority":65535,
+	"other":"icmp,in_port=s1-eth2,vlan_tci=0x0001,dl_dst=00:00:00:00:01:00,icmp_code=0",
+	"actions":"output:s1-eth1"
+},
+
+
+
+
+
+
+
+
+{
+	"dev":"s2",
+	"idle_timeout":30,
+	"priority":65535,
+	"other":"icmp,in_port=s2-eth1,dl_dst=00:00:00:00:00:02",
+	"actions":"output:s2-eth2"
+},
+
+{
+	"dev":"s2",
+	"idle_timeout":30,
+	"priority":65535,
+	"other":"icmp,in_port=s2-eth2,dl_dst=00:00:00:00:01:00",
+	"actions":"output:s2-eth1"
+},
+
+
+{
+	"dev":"r0",
+	"idle_timeout":30,
+	"priority":65535,
+	"other":"icmp,in_port=r0-eth1,nw_src=10.0.1.1,nw_dst=10.0.2.1",
+	"actions":"set_field:00:00:00:00:00:02->dl_dst,output=r0-eth2"
+},
+
+
+{
+	"dev":"r0",
+	"idle_timeout":30,
+	"priority":65535,
+	"other":"icmp,in_port=r0-eth2,nw_src=10.0.2.1,nw_dst=10.0.1.1",
+	"actions":"set_field:00:00:00:00:00:01->dl_dst,output=r0-eth1"
+},
+
+
+
+
+{
+	"dev":"s2",
+	"idle_timeout":30,
+	"priority":65535,
+	"other":"arp",
+	"actions":"flood"
+},
+
+{
+	"dev":"s1",
+	"idle_timeout":30,
+	"priority":65535,
+	"other":"arp",
+	"actions":"flood"
+},
+
+{
+	"dev":"r0",
+	"idle_timeout":30,
+	"priority":65535,
+	"other":"arp",
+	"actions":"NORMAL"
+}
+]
